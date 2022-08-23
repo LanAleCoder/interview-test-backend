@@ -120,6 +120,11 @@ function agregarEstudiante(req, res) {
                 .status(400)
                 .send({ mensaje: "Debe ser mayor de 17 años" });
             }
+            if(parametros.telefono.length != 8) {
+              return res
+                .status(400)
+                .send({ mensaje: "El numero de telefono tiene que ser de 8 digitos" });
+            }
             estudianteModel.save((err, participacionGuardada) => {
               return res.send({ participacion: participacionGuardada });
             });
